@@ -1,0 +1,56 @@
+<!-- https://github.com/niceman114/popup-window -->
+<!-- Hello! -->
+<main>
+  <h1>Demo</h1>
+  <hr>
+
+  <h2>URL based PopupWindow</h2>
+  <h3>Action</h3>
+  <button onclick="urlPopupWindow.open()">Open</button>
+  <button onclick="urlPopupWindow.close()">Close</button>
+  <button onclick="urlPopupWindow.closeSilently()">closeSilently</button>
+
+  <h3>See the event list of PopupWindow!</h3>
+  <ol id="url-popup-window-event-list">
+    <li>Not yet.</li>
+  </ol>
+  <hr>
+
+  <h2>Form based PopupWindow</h2>
+  <h3>Settings</h3>
+  <h4>Select http method</h4>
+  <section>
+    <input id="radio-method-get" type="radio" name="method" value="GET" onclick="document.form_demo.method=this.value" checked>
+    <label for="radio-method-get">GET</label>
+    <input id="radio-method-post" type="radio" name="method" value="POST" onclick="document.form_demo.method=this.value">
+    <label for="radio-method-post">POST</label>
+  </section>
+
+  <h4>Input data</h4>
+  <form name="form_demo" method="GET">
+    <ul>
+      <li>
+        <section>
+          <label for="text-data1">Data1</label>
+          <input id="text-data1" type="text" name="data1" value="defaultValue1">
+        </section>
+      </li>
+      <li>
+        <section>
+          <label for="text-data2">Data2</label>
+          <input id="text-data2" type="text" name="data2" value="defaultValue2">
+        </section>
+      </li>
+    </ul>
+  </form>
+
+  <h3>Action</h3>
+  <button onclick="formPopupWindow.open()">Open</button>
+  <button onclick="formPopupWindow.close()">Close</button>
+  <button onclick="formPopupWindow.closeSilently()">closeSilently</button>
+
+  <h3>See the event list of PopupWindow!</h3>
+  <ol id="form-popup-window-event-list">
+    <li>Not yet.</li>
+  </ol>
+</main>

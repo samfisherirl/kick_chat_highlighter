@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Viewer</title>
+  <style>
+    /* Ensure the iframe takes up the full window */
+    html,
+    
+    #toHide {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem;
+      text-align: center;
+      display: flex;
+      justify-content: center; /* This ensures that the input and button are spaced properly */
+    }
+
+    .logo {
+      height: 6em;
+      padding: 1.5em;
+      will-change: filter;
+      transition: filter 300ms;
+    }
+
+    .logo:hover {
+      filter: drop-shadow(0 0 2em #646cffaa);
+    }
+
+    .logo.react:hover {
+      filter: drop-shadow(0 0 2em #61dafbaa);
+    }
+
+    @keyframes logo-spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      a:nth-of-type(2) .logo {
+        animation: logo-spin infinite 20s linear;
+      }
+    }
+
+    .card {
+      padding: 2em;
+    }
+
+    .read-the-docs {
+      color: #888;
+    }
+
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+      display: block;
+      justify-content: center;
+      align-items: start;
+      background-color: rgb(0, 0, 0);
+      font-family: Arial, sans-serif;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 300px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: rgb(0, 0, 0);
+      border-radius: 8px;
+    }
+
+    form label {
+      margin-bottom: 10px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    input, button {
+      padding: 10px 20px; /* Normalize padding for both */
+      font-size: 16px; /* Ensure font size is consistent */
+      border: 1px solid #ccc; /* Standardize border for consistency */
+      border-radius: 4px; /* Use the same border radius */
+      width: 175%; /* Keep the full width for both */
+      box-sizing: border-box; /* Include padding and border in the total width and height */
+    }
+
+    input {
+      border-color: #ccc; /* Specific to input for clarification */
+        margin-right: 2%; /* Add space to the right of the input */
+      background-color: #fff; /* Ensure input has a white background for contrast */
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+
+      display: flex; /* Enable flexbox layout */
+      justify-content: center; /* Center content horizontally */
+      align-items: center; /* Center content vertically */
+      text-align: center; /* Ensure text itself is centered, useful for multi-line text */
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid #000000;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #000000;
+    }
+
+    #iframeContainer {
+      height: calc(100% - 32px);
+      /* Adjust height to account for input height */
+      width: 100%;
+    }
+
+    #userInput,
+    #goButton {
+      height: 32px;
+      /* Set a standard height for the input and button */
+      line-height: 32px;
+      /* Center text vertically */
+    }
+  </style>
+</head>
+
+<body>
+  <h3>Action</h3>
+  <button onclick="urlPopupWindow.open()">Open</button>
+  <button onclick="urlPopupWindow.close()">Close</button>
+  <button onclick="urlPopupWindow.closeSilently()">closeSilently</button>
+  
+  <h3>See the event list of PopupWindow!</h3>
+  <!-- URL Input and Go Button -->
+  <div id="toHide">
+  <input type="text" id="userInput" placeholder="Enter Kick Username Here" />
+  <button id="goButton">Go</button>
+</div>
+  <!-- iFrame Container -->
+  <div id="iframeContainer">
+    <iframe id="siteFrame" src="" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+  </div>
+
+  <script>
+    // Modified loadURL function to handle URL correctly
+    function loadURL() {
+      var userInput = document.getElementById("userInput").value;
+      var url;
+      url = `https://kick.com/popout/${userInput}/chat`.trim(); // If yes, use the URL as is
+      document.getElementById("siteFrame").src = url; // Set the iframe's src to the formatted URL
+    }
+
+    // Event listener for the Go button
+    document.getElementById("goButton").addEventListener("click", loadURL);
+  </script>
+  <script src="inject.js"></script>
+</body>
+
+</html>
